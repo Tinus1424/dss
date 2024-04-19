@@ -1,0 +1,1 @@
+print(open("C:/Users/marti/Documents/1_vscode/1_dp/9_pcdata/pc_rose.txt").read())

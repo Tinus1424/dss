@@ -1,0 +1,4 @@
+#9 two                 20
+#9 large               10
+#6 extra-dip           10
+#7 -                    5

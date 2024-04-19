@@ -1,0 +1,6 @@
+#9 two                 20
+#9 large               10
+#6 extra-dip           10
+#7 -                    5
+#45 two,1-with-cheese  25
+#14 gsr big juice fat 300

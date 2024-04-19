@@ -1,0 +1,10 @@
+insert into Author (authorID, author_firstname, author_lastname, email, address, city, state, zip) values (1, 'Zoe', 'Fullick', 'zfullick0@businesswire.com', '9184 Iowa Lane', 'London', 'UK', 'NW36SG');
+insert into Author (authorID, author_firstname, author_lastname, email, address, city, state, zip) values (2, 'Courtenay', 'Humpatch', 'chumpatch1@mozilla.com', '66 Duke Plaza', 'Paris', 'France', '75007');
+insert into Author (authorID, author_firstname, author_lastname, email, address, city, state, zip) values (3, 'Tyson', 'Goldsworthy', 'tgoldsworthy2@facebook.com', '3049 Northwestern Hill', 'Berlin', 'Germany', '10627');
+insert into Author (authorID, author_firstname, author_lastname, email, address, city, state, zip) values (4, 'Tracie', 'Rumgay', 'trumgay3@oracle.com', '3123 Norway Maple Avenue', 'Madrid', 'Spain', '52006');
+insert into Author (authorID, author_firstname, author_lastname, email, address, city, state, zip) values (5, 'Ashlie', 'Hembery', 'ahembery4@abc.net.au', '1 Anzinger Hill', 'Rome', 'Italy', '00118');
+insert into Author (authorID, author_firstname, author_lastname, email, address, city, state, zip) values (6, 'Udale', 'Elmhurst', 'uelmhurst5@smh.com.au', '15 Katie Place', 'Amsterdam', 'Netherlands', '5037AB');
+insert into Author (authorID, author_firstname, author_lastname, email, address, city, state, zip) values (7, 'Jayne', 'Ivankovic', 'jivankovic6@economist.com', '76775 Grim Drive', 'Vienna', 'Austria', '5023');
+insert into Author (authorID, author_firstname, author_lastname, email, address, city, state, zip) values (8, 'Katherina', 'Bertson', 'kbertson7@multiply.com', '642 Bashford Circle', 'Stockholm', 'Sweden', '11351');
+insert into Author (authorID, author_firstname, author_lastname, email, address, city, state, zip) values (9, 'Conrad', 'Beardmore', 'cbeardmore8@soup.io', '6138 Fordem Alley', 'Prague', 'Czech', '12000');
+insert into Author (authorID, author_firstname, author_lastname, email, address, city, state, zip) values (10, 'Whitney', 'Turfrey', 'wturfrey9@histats.com', '2 Park Meadow Park', 'Athens', 'Greece', '20300');

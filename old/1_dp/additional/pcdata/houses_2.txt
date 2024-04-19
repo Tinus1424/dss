@@ -1,0 +1,63 @@
+House 1:
+   Location: Utrecht
+   Bedrooms: 2
+   Bathrooms: 1
+   Square Footage: 150
+   Price: €180,000
+
+House 2:
+   Location: Rotterdam
+   Bedrooms: 3
+   Bathrooms: 2.5
+   Square Footage: 200
+   Price: €280,000
+
+House 3:
+   Location: Almere
+   Bedrooms: 4
+   Bathrooms: 3.5
+   Square Footage: 240
+   Price: €350,000
+
+House 4: 
+   Location: Eindhoven
+   Bedrooms: 3
+   Bathrooms: 2
+   Square Footage: 180
+   Price: €250,000
+
+House 4: 
+   Location: Eindhoven
+   Bedrooms: 3
+   Bathrooms: 2
+   Square Footage: 180
+   Price: €250,000
+
+House 4: 
+   Location: Eindhoven
+   Bedrooms: 3
+   Bathrooms: 2
+   Square Footage: 180
+   Price: €250,000
+
+House 4: 
+   Location: Eindhoven
+   Bedrooms: 3
+   Bathrooms: 2
+   Square Footage: 180
+   Price: €250,000
+
+House 4: 
+   Location: Eindhoven
+   Bedrooms: 3
+   Bathrooms: 2
+   Square Footage: 180
+   Price: €250,000
+
+House 4: 
+   Location: Eindhoven
+   Bedrooms: 3
+   Bathrooms: 2
+   Square Footage: 180
+   Price: €250,000
+

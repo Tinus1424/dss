@@ -1,0 +1,10 @@
+insert into Royalties (advance, royalty_rate, Title_titleID) values (267.2, 9, 1);
+insert into Royalties (advance, royalty_rate, Title_titleID) values (368.53, 56, 2);
+insert into Royalties (advance, royalty_rate, Title_titleID) values (912.64, 62, 3);
+insert into Royalties (advance, royalty_rate, Title_titleID) values (650.29, 69, 4);
+insert into Royalties (advance, royalty_rate, Title_titleID) values (167.57, 91, 5);
+insert into Royalties (advance, royalty_rate, Title_titleID) values (190.52, 84, 6);
+insert into Royalties (advance, royalty_rate, Title_titleID) values (348.8, 37, 7);
+insert into Royalties (advance, royalty_rate, Title_titleID) values (297.75, 4, 8);
+insert into Royalties (advance, royalty_rate, Title_titleID) values (967.03, 62, 9);
+insert into Royalties (advance, royalty_rate, Title_titleID) values (98.62, 100, 10);
