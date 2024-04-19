@@ -1,6 +1,0 @@
-Product, Quantity, Price
-Laptop, 10, 800
-Printer, 5, 200
-Mouse, 20, 15
-Keyboard, 15, 30
-Monitor, 8, 300
