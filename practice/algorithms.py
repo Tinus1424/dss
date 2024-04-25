@@ -1,3 +1,6 @@
+
+
+
 # Exercise 3.1
 
 a = [2, 4, 8, 7]
@@ -30,4 +33,10 @@ def recmax(x):
     sub_max = recmax(x[1:])        
     return x[0] if x[0] > sub_max else sub_max  
     
-print(recmax(a))
+
+def recsearch(x, item):
+    low = 0 
+    high = 
+    if len(x) == 1:
+        return x[0]
+    
