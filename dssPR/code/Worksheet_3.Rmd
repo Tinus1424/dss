@@ -353,6 +353,10 @@ ggplot(houses, aes(x = Yr.Sold, linetype = Bldg.Type)) +
 ## plot the number of garages per 'Garage.Yr.Blt' with a line per 'Garage.Cars'
 garages <- houses[!is.na(houses$Garage.Yr.Blt) & houses$Garage.Yr.Blt < 2010, ]
 
+garages$Garage.Fcars <- factor(garages$Garage.Cars)
+
+garages |> ggplot() +
+  geom_smooth(aes(x = Garage.Yr.Blt, color = Garage.Fcars), stat = "count")
 ```
 
 ### Controlling Plot Appearance
@@ -409,7 +413,7 @@ table(houses$Bldg.Type, useNA = "always")
 
 You can also use each `scale_..._...()` function to control the appearance of the corresponding axis or legend. So, for example, for the `x` and `y` aesthetics, you can set tick mark spacing; for aesthetics that produce legends, you can set the order in which items appear; for either, you can set the title.
 
-For instance, in a `scale_..._...()` function, the argument `name` specifies titles, and `breaks` specifies either tick marks (for axes) or item ordering (for legends). The argument `guide = FALSE` supresses a legend entirely.
+For instance, in a `scale_..._...()` function, the argument `name` specifies titles, and `breaks` specifies either tick marks (for axes) or item ordering (for legends). The argument `guide = FALSE` suppresses a legend entirely.
 
 Compare these two plots, for example:
 
@@ -460,16 +464,17 @@ This is true of `ggplot` in general, too; there's often many ways of doing thing
 ```{r Exercise 12. Fix the y axis., fig.height = 2, fig.width = 8}
 ## fix the awkward y axis
 ggplot(data = houses, aes(x = Lot.Area, y = SalePrice, color = Garage.Type)) +
-  geom_point()
-
+  geom_point() +
+  scale_y_continuous(limits = c(0, 800000))
 ```
 
 (13) The plot below maps `Gr.Liv.Area` to `size`; adapt it so that it maps `Gr.Liv.Area` to `color`, with a scale that runs from yellow for small houses to red for large houses. You should be able to derive the right `scales_..._` function; then use `?` to find the correct argument.
 
 ```{r Exercise 13. Color instead of size., fig.height = 2, fig.width = 8}
 ## plot 'SalePrice' versus 'Lot.Area', with 'Gr.Liv.Area' shown by 'color'
-ggplot(data = houses, aes(x = Lot.Area, y = SalePrice, size = Gr.Liv.Area)) +
-  geom_point()
+ggplot(data = houses, aes(x = Lot.Area, y = SalePrice, color = Gr.Liv.Area)) +
+    geom_point() +
+    scale_colour_gradientn(colors = c("yellow", "red"))
 ```
 
 (14) Re-do this plot with `1Fam` homes shown as stars, `2fmCon` as squares, `Duplex` as pluses, `Twhns` as 'down triangles', and `TwnhsE` as 'up triangles'. You should be able to derive the right `scales_..._` function; each shape is defined by a number; scan `?pch` to see which number is which shape.
@@ -478,7 +483,8 @@ ggplot(data = houses, aes(x = Lot.Area, y = SalePrice, size = Gr.Liv.Area)) +
 ## specify the shape of each 'Bldg.Type' directly
 ggplot(data = houses, aes(x = Lot.Area, y = SalePrice, shape = Bldg.Type)) +
   geom_point() +
-  scale_x_continuous(limits = c(0, 75000))
+  scale_x_continuous(limits = c(0, 75000)) +
+  scale_shape_manual(values = c(8, 0, 3, 6, 2))
 ```
 
 (15) Create a barplot showing the number of houses of each `House.Style`, with "1Story" as the far left bar and "2.5Fin" as the far right bar; order the rest in between in a sensible way.
@@ -486,6 +492,9 @@ ggplot(data = houses, aes(x = Lot.Area, y = SalePrice, shape = Bldg.Type)) +
 ```{r Exercise 15. Specify bar order., fig.height = 2, fig.width = 8}
 ## plot the number houses sold for each `House.Style`;
 ## order bars from `1Story` to `2.5Fin`.
+ggplot(houses, aes(x = House.Style)) +
+  geom_bar()+
+  scale_x_discrete(limits = c("1Story", "2Story", "1.5Unf", "2.5Unf", "2.5Fin"))
 
 ```
 
@@ -547,7 +556,9 @@ ggplot(data = houses, aes(x = Lot.Area, y = SalePrice, color = Gr.Liv.Area)) +
 ```{r Exercise 16. Adapt a plot legend., fig.height = 2, fig.width = 8}
 ## plot 'SalePrice' vs 'Lot.Area', with 'Bldg.Type' maaped to 'color' and
 ## 'Gr.Liv.Area' to size; put the legends next to each other, with grey boxes
-
+ggplot(houses, aes(x = Lot.Area, y = SalePrice, color = Bldg.Type, size = Gr.Liv.Area)) +
+  geom_point() +
+  theme(legend.box = "horizontal", legend.background = element_rect(fill = "darkgrey"))
 ```
 
 (17) The plot below uses `theme()` to move the x-axis about 0.4 cm away from the plot. The `unit` specification follows the `TRouBLe` order: Top, Right, Bottom, Left. Knowing that, can you figure out how to move the y-axis title about 0.4 cm away from the plot, too? Adapt the code chunk below.
@@ -556,7 +567,8 @@ ggplot(data = houses, aes(x = Lot.Area, y = SalePrice, color = Gr.Liv.Area)) +
 ## move the y-axis title by 0.4 cm
 ggplot(data = houses, aes(x = Garage.Type, y = SalePrice)) +
   geom_boxplot() +
-  theme(axis.title.x = element_text(margin = unit(c(0.4, 0, 0, 0), "cm")))
+  theme(axis.title.x = element_text(margin = unit(c(0.4, 0, 0, 0), "cm")),
+        axis.title.y = element_text(margin = unit(c(0, 0.4, 0, 0), "cm")))
 ```
 
 ### Facets
@@ -590,7 +602,9 @@ ggplot(data = average_houses, aes(x = SalePrice)) +
 
 ```{r Exercise 18. Facet in one dimension., fig.height = 2, fig.width = 8}
 ## create a scatterplot that facets by Garage.Type
-
+ggplot(houses, aes(x = Garage.Area, y = SalePrice)) +
+  geom_point() +
+  facet_grid(. ~ Garage.Type)
 ```
 
 (19) Use `theme()` to adapt the plot below so that the facets are about 3 mm apart both horizontally and vertically.
@@ -601,7 +615,8 @@ ggplot(data = average_houses, aes(x = SalePrice)) +
   geom_histogram() +
   scale_y_continuous("Number of Houses") +
   scale_x_continuous("Sale Price") +
-  facet_grid(Full.Bath ~ Bedroom.AbvGr)
+  facet_grid(Full.Bath ~ Bedroom.AbvGr) +
+  theme(panel.spacing.x = unit(3, "mm"))
 ```
 
 ### Putting It All Together
@@ -616,9 +631,17 @@ Improve the plot in the following ways:
 -   Make all plot text size 14.
 
 ```{r Exercise 20. Putting it all together., fig.height = 2, fig.width = 8}
-## create the plot described above
-houses |> ggplot(aes(x = Bedroom.AbvGr, fill = Full.Bath)) +
-  geom_bar()
+houses$FactorBath = factor(houses$Full.Bath)
+
+ggplot(houses, aes(x = Bedroom.AbvGr, fill = FactorBath)) +
+  geom_bar() +
+  scale_x_discrete(name = "Number of Bedrooms") +
+  scale_y_discrete(name = "Number of Houses") +
+  scale_fill_discrete(type = c("#C3BCB2", "#CC9933", "#339900", "#008EC6", "#003366"), name = "Number of Bathrooms") +
+  theme(legend.position = "bottom") +
+  theme(text = element_text(size = 14)) +
+  theme(axis.title.y = element_text(hjust = 1))
+  
 ```
 
 That's it for this week! Now it's time to head to Canvas: Upload your copy of this worksheet, and start practicing.
@@ -658,7 +681,7 @@ If you want a bit more information on some of these topics, I recommend:
 ### Overview of New R Functions & Operators
 
 | R code              | does what                                           |
-|---------------------|---------------------------------------------------|
+|----------------------|--------------------------------------------------|
 | `+`\*               | add more to a `ggplot()`                            |
 | `aes()`\*           | control the mapping of variables to aesthetics      |
 | `element_blank()`\* | create a blank element for use with `theme()`       |
